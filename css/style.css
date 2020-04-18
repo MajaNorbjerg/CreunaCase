@@ -1,0 +1,126 @@
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+body {
+    font: 12px/18px "TrebuchetMS", Helvetica, Verdana, sans-serif;
+    /*XXX*/
+}
+
+
+
+
+/* Header
+.........................................................................*/
+
+
+
+/* Main
+.........................................................................*/
+#profile {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: right; */
+
+    width: 30%;
+
+
+
+}
+
+.profile {
+    width: 25%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    /* margin-bottom: 1em; */
+}
+
+.profile img:hover {
+    /* transform: scale(1.1); */
+    animation: in .4s linear 1;
+    animation-fill-mode: forwards;
+}
+
+.profile div {
+    width: 100%;
+
+
+}
+
+.profile div {
+    /* margin-top: 1.5em; */
+    /*background-color: rgba(255, 255, 255, .7);
+
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px; */
+
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+
+}
+
+.profile .imgDiv {
+    overflow: hidden;
+    /* height: 128px; */
+}
+
+.profile .imgDiv div {
+    /* height: 128px; */
+    overflow: hidden;
+
+}
+
+.profile img {
+    /* max-width: 128px; */
+    /* height: 128px; */
+    animation: out .4s linear 1;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+
+}
+
+@keyframes in {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes out {
+    from {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+
+
+/* Footer
+.........................................................................*/
+
+
+
+
+/* @media query! Skærme over XXXpx
+..................................................................*/
