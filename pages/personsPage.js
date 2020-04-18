@@ -58,6 +58,7 @@ export default class PersonsPage {
     }
 
     async myFunction(searchValue, property) {
+        console.log(property)
 
         searchValue = searchValue.toLowerCase();
         let filteredPersons = [];
