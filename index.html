@@ -48,7 +48,9 @@
 ............................................................. 
 -->
     <main>
-
+        <input type="search" id="search" placeholder="Search" onkeyup="search(this.value, 'array')">
+        <input type="text" id="myInput" onkeyup="myFunction(this.value)" placeholder="Search for an email"
+            title="Type in an email">
         <section id="profile"></section>
 
 
@@ -64,7 +66,7 @@
 
     </footer>
     <!-- API data -->
-    <script src="apiConfig.js" type="module"></script>
+    <!-- <script src="apiConfig.js" type="module"></script> -->
     <!-- Main js file -->
     <script src="main.js" type="module"></script>
 </body>

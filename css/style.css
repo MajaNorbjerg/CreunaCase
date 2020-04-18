@@ -28,25 +28,14 @@ body {
 
 /* Main
 .........................................................................*/
-#profile {
+#flexPersons {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: right; */
-
-    width: 30%;
-
-
-
+    width: 25%;
 }
 
 .profile {
-    width: 25%;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    /* margin-bottom: 1em; */
+    width: 100%;
 }
 
 .profile img:hover {
@@ -56,42 +45,28 @@ body {
 }
 
 .profile div {
-    width: 100%;
-
-
+    width: 50%;
 }
 
 .profile div {
-    /* margin-top: 1.5em; */
-    /*background-color: rgba(255, 255, 255, .7);
-
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px; */
-
     width: 100%;
     text-align: center;
     z-index: 2;
-
 }
 
 .profile .imgDiv {
     overflow: hidden;
-    /* height: 128px; */
 }
 
 .profile .imgDiv div {
-    /* height: 128px; */
     overflow: hidden;
-
 }
 
 .profile img {
-    /* max-width: 128px; */
-    /* height: 128px; */
     animation: out .4s linear 1;
     animation-fill-mode: forwards;
     overflow: hidden;
-
+    border-radius: 10px;
 }
 
 @keyframes in {

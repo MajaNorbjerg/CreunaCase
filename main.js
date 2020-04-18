@@ -1,18 +1,18 @@
 // "use strict";
 // Import pages
-
+import PersonsPage from "./pages/personsPage.js";
 
 
 
 // Import services
 // import SpaService from "./services/spa.js";
 // import LoaderService from "./services/loader.js";
-// import fetchPersons from "./services/apiConfig.js";
-import appendPersons from "./services/personsPage.js";
+import personService from "./services/personService.js";
+
 
 
 // // Declare and init pages
-
+let personsPage = new PersonsPage();
 
 
 // // Declare and init services
@@ -24,3 +24,5 @@ import appendPersons from "./services/personsPage.js";
 // window.pageChange = function () {
 //     spaService.pageChange();
 // }
+window.search = (input, array) => personsPage.search(input, array)
+window.myFunction = (input) => personsPage.myFunction(input)
