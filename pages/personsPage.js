@@ -60,11 +60,12 @@ export default class PersonsPage {
     async myFunction(searchValue, property) {
 
         searchValue = searchValue.toLowerCase();
-        // let filteredPersons = [];
+        let filteredPersons = [];
         for (const person of await this.data) {
-            console.log(person)
-            property = person.property.toLowerCase();
-            if (property.includes(searchValue)) {
+            console.log(property)
+            let theProperty = person[property].toLowerCase();
+            console.log(theProperty)
+            if (theProperty.includes(searchValue)) {
                 filteredPersons.push(person);
             }
         }

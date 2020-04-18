@@ -25,4 +25,4 @@ let personsPage = new PersonsPage();
 //     spaService.pageChange();
 // }
 window.search = (input, array) => personsPage.search(input, array)
-window.myFunction = (input) => personsPage.myFunction(input)
+window.myFunction = (input, property) => personsPage.myFunction(input, property)
