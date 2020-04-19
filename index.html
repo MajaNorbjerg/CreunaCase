@@ -48,41 +48,51 @@
 ............................................................. 
 -->
     <main>
-        <label for="search">Search:</label>
-        <input type="search" id="search" placeholder="Search" onkeyup="search(this.value, 'array')">
-        <br>
+        <section>
+            <label for="search">Search:</label>
+            <input type="search" id="search" placeholder="Search"
+                onkeyup="search1And2(this.value, 'name', 'first', 'last')">
+            <br>
 
-        <label for="username">Search username:</label>
-        <input type="search" id="username" placeholder="Search username" onkeyup="myFunction(this.value, this.id)">
-        <br>
+            <label for="username">Search username:</label>
+            <input type="search" id="username" placeholder="Search username"
+                onkeyup="search1And1(this.value, 'login', 'username')">
+            <br>
 
-        <label for="timezone">Search timezone:</label>
-        <input type="search" id="location.timezone.offset" placeholder="Search timezone"
-            onkeyup="myFunction(this.value, this.id)">
-        <br>
+            <label for="timezone">Choose timezone:</label>
+            <select id="timezone" onchange="search3(this.value, 'location', 'timezone', 'offset')">
+                <option value="">None</option>
+                <!-- <option value="male">Male</option>
+            <option value="female">Female</option> -->
+            </select>
+            <br>
 
-        <label for="adress">Search adress:</label>
-        <input type="search" id="adress" placeholder="Search adress" onkeyup="myFunction(this.value, this.id)">
-        <br>
+            <label for="adress">Search adress:</label>
+            <input type="search" id="adress" placeholder="Search adress"
+                onkeyup="search2And2(this.value, 'location', 'street', 'number', 'name')">
+            <br>
 
-        <label for="email">Search email:</label>
-        <input type="search" id="email" onkeyup="myFunction(this.value, this.id)" placeholder="Search for an email"
-            title="Type in an email">
-        <br>
+            <label for="email">Search email:</label>
+            <input type="search" id="email" onkeyup="search1(this.value, this.id)" placeholder="Search for an email"
+                title="Type in an email">
+            <br>
 
-        <label for="cell">Search cell number:</label>
-        <input type="search" id="cell" onkeyup="myFunction(this.value, this.id)" placeholder="88888888"
-            title="Type in cell number">
-        <br>
+            <label for="cell">Search cell number:</label>
+            <input type="search" id="cell" onkeyup="search1(this.value, this.id)" placeholder="88888888"
+                title="Type in cell number">
+            <br>
 
-        <label for="genders">Search gender:</label>
-        <select id="genders" onkeyup="myFunction(this.value, this.id)">
-            <option value="">All</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
+            <label for="gender">Search gender:</label>
+            <select id="gender" onchange="search1(this.value, this.id)">
+                <option value="">All</option>
+                <!-- <option value="male">Male</option>
+            <option value="female">Female</option> -->
+            </select>
 
-        <section id="profile"></section>
+            <article id="profile"></article>
+        </section>
+
+        <section id="detailView"></section>
 
 
     </main>
