@@ -1,16 +1,17 @@
-import personService from "../services/personService.js"
+import personService from "./../services/personService.js"
 
 export default class DetailView {
     constructor() {
-        this.data = [];
-        this.initData();
+        // this.data = [];
+        // this.initData();
+        // this.data = personService.persons;
     }
 
-    async initData() {
-        // let persons = await personService.loadPersons();
-        // console.log(await this.data)
-        this.data = await personService.loadPersons();
-    }
+    // async initData() {
+    //     // let persons = await personService.loadPersons();
+    //     // console.log(await this.data)
+    //     this.data = await personService.loadPersons();
+    // }
 
     template() {
         document.querySelector('#detailView').innerHTML += /*html*/ `
@@ -24,23 +25,27 @@ export default class DetailView {
 
     }
 
-    goToDetailView(username) {
-        // console.log(username)
-        let template = "";
-        for (const person of this.data) {
-            // console.log(person)
-            console.log(person.login.username, username)
-            if (person.login.username == username) {
-                console.log(person.login.username)
+    goToDetailView(id) {
 
-                template += /*html*/ ` <article class = "profile"> <img src="${person.picture.thumbnail}" alt="thumbnail"> 
+        let template = "";
+        let theId = id.slice(2, id.length);
+        personService.getPerson(theId)
+        console.log(personService.getPerson(theId))
+
+        for (const person of personService.persons) {
+            if (person.login.uuid === theId) {
+
+
+                template += /*html*/ ` <article> <img src="${person.picture.thumbnail}" alt="thumbnail"> 
              <div> ${person.name.first}
             ${person.name.last} </div>
             </article >
             `;
+
             }
         }
         document.querySelector('#detailView').innerHTML = template;
+        document.querySelector('#detailView').style.display = 'block'
     }
 
     // goToDetailView(username) {

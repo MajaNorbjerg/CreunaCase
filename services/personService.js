@@ -1,5 +1,7 @@
 class PersonService {
-    constructor() {}
+    constructor() {
+        this.persons;
+    }
 
     async loadPersons() {
         // try {
@@ -7,6 +9,7 @@ class PersonService {
         let jsonData = await response.json();
         //   loaderService.show(false);
 
+        this.persons = jsonData.results;
         return jsonData.results;
         // } catch (error) {
         //     console.log('Error getting persons:', error);
@@ -14,6 +17,11 @@ class PersonService {
         // }
     }
 
+    getPerson(uuid) {
+
+        let person = this.persons.find(person => person.login.uuid === uuid);
+        return person;
+    }
 
 }
 const personService = new PersonService();
