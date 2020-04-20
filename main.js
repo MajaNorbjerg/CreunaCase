@@ -32,4 +32,5 @@ window.search1And1 = (searchValue, mainProperty, property1) => personsPage.searc
 window.search2And2 = (searchValue, mainProperty, mainProperty2, property1, property2) => personsPage.search2And2(searchValue, mainProperty, mainProperty2, property1, property2);
 window.search3 = (searchValue, property, property2, property3) => personsPage.search3(searchValue, property, property2, property3);
 window.goToDetailView = (username) => detailView.goToDetailView(username);
-window.filter = () => personsPage.filter()
+window.filter = () => personsPage.filter();
+window.goback = () => detailView.goback()

@@ -3,7 +3,7 @@ export default class PersonsPage {
     constructor() {
         this.data = [];
 
-        this.filteredPersons = [];
+        this.allPersons;
         this.template();
         this.initData();
     }
@@ -15,6 +15,7 @@ export default class PersonsPage {
         this.appendPersons(this.data);
         this.createGenderOptions();
         this.createTimezoneOptions();
+        console.log(this.data)
 
     }
     template() {
@@ -35,7 +36,7 @@ export default class PersonsPage {
 
 
 
-            template += /*html*/ ` <article class="profile" id="ID${person.login.uuid}" onclick="goToDetailView(this.id); filter()"> <img src="${person.picture.thumbnail}" alt="thumbnail"> 
+            template += /*html*/ ` <article class="profile" id="ID${person.login.uuid}" onclick="goToDetailView(this.id)"> <img src="${person.picture.thumbnail}" alt="thumbnail"> 
              <div> ${person.name.first}
             ${person.name.last} </div>
             </article >
@@ -45,91 +46,91 @@ export default class PersonsPage {
         document.querySelector('#flexPersons').innerHTML = template;
     }
 
-    search1And2(searchValue, mainProperty, property1, property2) {
-        searchValue = searchValue.toLowerCase();
-        console.log(searchValue);
+    // search1And2(searchValue, mainProperty, property1, property2) {
+    //     searchValue = searchValue.toLowerCase();
+    //     console.log(searchValue);
 
-        // this.filteredPersons = [];
-        for (const person of this.data) {
-            let element = document.querySelector(`#ID${person.login.uuid}`)
-            let prop1 = person[mainProperty][property1].toLowerCase();
-            let prop2 = person[mainProperty][property2].toLowerCase();
-            if (prop1.includes(searchValue) || prop2.includes(searchValue)) {
-                element.style.display = ""
-            } else {
-                element.style.display = "none";
-            }
-        }
-        // this.appendPersons(this.filteredPersons);
-    }
+    //     // this.allPersons = [];
+    //     for (const person of this.data) {
+    //         let element = document.querySelector(`#ID${person.login.uuid}`)
+    //         let prop1 = person[mainProperty][property1].toLowerCase();
+    //         let prop2 = person[mainProperty][property2].toLowerCase();
+    //         if (prop1.includes(searchValue) || prop2.includes(searchValue)) {
+    //             element.style.display = ""
+    //         } else {
+    //             element.style.display = "none";
+    //         }
+    //     }
+    //     // this.appendPersons(this.allPersons);
+    // }
 
-    search2And2(searchValue, mainProperty, mainProperty2, property1, property2) {
-        searchValue = searchValue.toLowerCase();
+    // search2And2(searchValue, mainProperty, mainProperty2, property1, property2) {
+    //     searchValue = searchValue.toLowerCase();
 
-        for (const person of this.data) {
-            let element = document.querySelector(`#ID${person.login.uuid}`)
+    //     for (const person of this.data) {
+    //         let element = document.querySelector(`#ID${person.login.uuid}`)
 
-            let prop1 = person[mainProperty][mainProperty2][property1].toString().toLowerCase();
-            let prop2 = person[mainProperty][mainProperty2][property2].toLowerCase();
-            if (prop1.includes(searchValue) || prop2.includes(searchValue) && (element.style.display = 'inline')) {
-                // element.style.display = ""
-            } else {
-                element.style.display = "none";
-            }
-        }
-        // this.appendPersons(this.filteredPersons);
-    }
+    //         let prop1 = person[mainProperty][mainProperty2][property1].toString().toLowerCase();
+    //         let prop2 = person[mainProperty][mainProperty2][property2].toLowerCase();
+    //         if (prop1.includes(searchValue) || prop2.includes(searchValue) && (element.style.display = 'inline')) {
+    //             // element.style.display = ""
+    //         } else {
+    //             element.style.display = "none";
+    //         }
+    //     }
+    //     // this.appendPersons(this.allPersons);
+    // }
 
-    search1(searchValue, property) {
+    // search1(searchValue, property) {
 
 
-        searchValue = searchValue.toLowerCase();
-        // let filteredPersons = [];
-        for (const person of this.data) {
-            let element = document.querySelector(`#ID${person.login.uuid}`)
+    //     searchValue = searchValue.toLowerCase();
+    //     // let allPersons = [];
+    //     for (const person of this.data) {
+    //         let element = document.querySelector(`#ID${person.login.uuid}`)
 
-            let theProperty = person[property].toLowerCase();
-            if (theProperty.includes(searchValue) && (element.style.display = 'inline')) {
-                // element.style.display = ""
-            } else {
-                element.style.display = "none";
-            }
-        }
-        // this.appendPersons(this.filteredPersons);
-    }
+    //         let theProperty = person[property].toLowerCase();
+    //         if (theProperty.includes(searchValue) && (element.style.display = 'inline')) {
+    //             // element.style.display = ""
+    //         } else {
+    //             element.style.display = "none";
+    //         }
+    //     }
+    //     // this.appendPersons(this.allPersons);
+    // }
 
-    search3(searchValue, property, property2, property3) {
-        searchValue = searchValue.toLowerCase();
-        // let filteredPersons = [];
-        for (const person of this.data) {
-            let element = document.querySelector(`#ID${person.login.uuid}`)
-            let theProperty = person[property][property2][property3].toLowerCase();
-            if (theProperty.includes(searchValue) && (element.style.display = 'inline')) {
-                // element.style.display = ""
-            } else {
-                element.style.display = "none";
-            }
-        }
-        // this.appendPersons(this.filteredPersons);
-    }
+    // search3(searchValue, property, property2, property3) {
+    //     searchValue = searchValue.toLowerCase();
+    //     // let allPersons = [];
+    //     for (const person of this.data) {
+    //         let element = document.querySelector(`#ID${person.login.uuid}`)
+    //         let theProperty = person[property][property2][property3].toLowerCase();
+    //         if (theProperty.includes(searchValue) && (element.style.display = 'inline')) {
+    //             // element.style.display = ""
+    //         } else {
+    //             element.style.display = "none";
+    //         }
+    //     }
+    //     // this.appendPersons(this.allPersons);
+    // }
 
-    search1And1(searchValue, mainProperty, property1) {
-        searchValue = searchValue.toLowerCase();
-        console.log(searchValue);
+    // search1And1(searchValue, mainProperty, property1) {
+    //     searchValue = searchValue.toLowerCase();
+    //     // console.log(searchValue);
 
-        // let filteredPersons = [];
-        for (const person of this.data) {
-            let element = document.querySelector(`#ID${person.login.uuid}`)
-            let prop1 = person[mainProperty][property1].toLowerCase();
+    //     // let allPersons = [];
+    //     for (const person of this.data) {
+    //         let element = document.querySelector(`#ID${person.login.uuid}`)
+    //         let prop1 = person[mainProperty][property1].toLowerCase();
 
-            if (prop1.includes(searchValue) && (element.style.display = 'inline')) {
-                // element.style.display = ""
-            } else {
-                element.style.display = "none";
-            }
-        }
-        // this.appendPersons(this.filteredPersons);
-    }
+    //         if (prop1.includes(searchValue) && (element.style.display = 'inline')) {
+    //             // element.style.display = ""
+    //         } else {
+    //             element.style.display = "none";
+    //         }
+    //     }
+    //     // this.appendPersons(this.allPersons);
+    // }
 
     // var input, filter, ul, li, a, i, txtValue;
     // input = document.getElementById("myInput");
@@ -199,27 +200,131 @@ export default class PersonsPage {
     };
 
     filter() {
-        let gender = document.querySelector('#gender');
-        let timezone = document.querySelector('#timezone');
-        let adress = document.querySelector('#adress');
-        let time = "";
-        let adr = "";
-        for (const person of this.data) {
 
 
-            if (timezone.value !== "") {
-                time = `${timezone.value} === ${person.location.timezone.offset}`
+        let allPersons = this.data;
+
+
+        let filteredPersons = []
+        // console.log(allPersons)
+        // console.log(this.data)
+        let newArr = [];
+        let inputs = document.querySelector('#filterInputs').getElementsByTagName('INPUT');
+        let selects = document.querySelector('#filterInputs').getElementsByTagName('SELECT');
+        // console.log(inputs.length, selects.length)
+        for (const input of inputs) {
+            if (input.value !== "") {
+                if (input.id === 'search') {
+
+                    for (const person of allPersons) {
+                        if (person.name.first.includes(input.value) || person.name.last.includes(input.value)) {
+                            // console.log('det virker måske')
+                            // console.log(allPersons)
+                            filteredPersons = allPersons.filter(person => {
+                                if (person.name.first.includes(input.value) || person.name.last.includes(input.value)) {
+                                    return person
+                                }
+                            })
+                            console.log(filteredPersons)
+                            // console.log(allPersons)
+                        } else {
+
+
+                            // let index = allPersons.indexOf(person);
+                            // allPersons.splice(index, 1);
+                            // console.log(allPersons)
+                            // console.log(allPersons)
+                        }
+                    }
+
+                }
+
+
+                if (input.id == 'username') {
+
+                    for (const person of allPersons) {
+                        if (person.login.username.includes(input.value)) {
+                            // console.log('det virker måske')
+                        } else {
+                            let index = allPersons.indexOf(person);
+                            allPersons.splice(index, 1);
+                        }
+                    }
+
+                }
+
+
+                if (input.id == 'adress') {
+                    console.log(input.id)
+                    console.log(allPersons)
+                    for (const person of allPersons) {
+                        if (person.location.street.name.includes(input.value) || person.location.street.number.includes(input.value)) {
+                            // console.log('det virker måske')
+                        } else {
+                            let index = allPersons.indexOf(person);
+                            allPersons.splice(index, 1);
+                        }
+                    }
+
+                }
+
+                if (input.id === 'email') {
+
+                    for (const person of allPersons) {
+                        if (person.email.includes(input.value)) {
+                            // console.log('det virker måske')
+                        } else {
+                            let index = allPersons.indexOf(person);
+                            allPersons.splice(index, 1);
+                        }
+                    }
+
+                }
+
+                if (input.id == 'cell') {
+
+                    for (const person of allPersons) {
+                        if (person.cell(input.value)) {
+                            // console.log('det virker måske')
+                        } else {
+                            let index = allPersons.indexOf(person);
+                            allPersons.splice(index, 1);
+                        }
+                    }
+
+                }
             }
-            if (adress.value !== "") {
-                adr = `${timezone.value} === ${person.location.street.name}`
-            }
 
-
-            if (time && adr) {
-                // if (person.gender.includes(gender.value)) {
-                console.log('det matcher')
-            }
 
         }
+
+
+
+        this.appendPersons(filteredPersons);
+
+
+        // let gender = document.querySelector('#gender');
+        // let timezone = document.querySelector('#timezone');
+        // let adress = document.querySelector('#adress');
+        // let time = "";
+        // let adr = "";
+        // for (const person of this.data) {
+
+
+        //     if (timezone.value !== "") {
+        //         time = `${timezone.value} === ${person.location.timezone.offset}`
+        //     }
+        //     if (adress.value !== "") {
+        //         adr = `${timezone.value} === ${person.location.street.name}`
+        //     }
+
+
+        //     if (time && adr) {
+        //         // if (person.gender.includes(gender.value)) {
+        //         console.log('det matcher')
+        //     }
+
+        // }
+
     }
 }

@@ -16,8 +16,28 @@ summary {
 body {
     font: 12px/18px "TrebuchetMS", Helvetica, Verdana, sans-serif;
     /*XXX*/
+    background-color: rgb(219, 196, 240);
 }
 
+:root {
+
+    --imgRadius: 10px;
+}
+
+
+b {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: #451234;
+    font-weight: bold;
+}
+
+.textCollection {
+    padding: 1.5em 0;
+}
 
 
 
@@ -32,7 +52,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    background-color: blueviolet;
 }
 
 .profile {
@@ -47,6 +66,7 @@ body {
     /* transform: scale(1.1); */
     animation: in .4s linear 1;
     animation-fill-mode: forwards;
+    cursor: pointer;
 }
 
 .profile div {
@@ -70,7 +90,7 @@ body {
     animation: out .4s linear 1;
     animation-fill-mode: forwards;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: var(--imgRadius);
     margin: 0 auto;
 }
 
@@ -101,11 +121,66 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #154;
+    background-color: #5a8170;
     display: none;
 }
 
+#detailView .line {
+    height: 25%;
+    width: 100%;
+    background-color: #F9F8Fa;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
+#detailView button {
+    margin: 2em 10% 0;
+    z-index: 5;
+    border: brown;
+    background-color: brown;
+    color: white;
+    cursor: pointer;
+    border-radius: var(--imgRadius);
+}
+
+#theDetailView {
+    width: 80%;
+    position: absolute;
+    /* top: 2em; */
+    transform: translate(12.5%, 50%);
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: flex-end; */
+
+}
+
+#theDetailView img {
+
+    float: right;
+    /* margin-top: 47%; */
+    border-radius: var(--imgRadius);
+
+
+}
+
+#theDetailView h2 {
+
+    /* float: right; */
+    /* margin-top: 47%; */
+
+    font-size: 2em;
+    line-height: 1em;
+
+}
+
+#theDetailView p {
+    /* align-self: flex-end; */
+    /* display: block; */
+    clear: both;
+
+
+}
 
 /* Footer
 .........................................................................*/
