@@ -8,40 +8,45 @@ export default class PersonsPage {
         this.initData();
     }
 
+    //.................... This initData function runs within the constructor and runs the first essential functions to get data shown on the page ....................
     async initData() {
-        // let persons = await personService.loadPersons();
-        // console.log(await this.data)
-        this.data = await personService.loadPersons();
-        this.appendPersons(this.data);
-        this.createGenderOptions();
-        // this.createTimezoneOptions();
-        console.log(this.data)
-        this.showFilter();
+        this.data = await personService.loadPersons(); // Get the returned JSON data from the personService.js
+        this.appendPersons(this.data); // Add persons
+        this.createGenderOptions(); // Add options to gender select box
+        this.showFilter(); // Hide the extra filtrations at first
 
     }
+
+    //....................HTML template added to #profile ....................
     template() {
         document.querySelector('#profile').innerHTML += /*html*/ `
    
-           <h2>Persons</h2>
+        <h2>Persons</h2>
 
-           <article id="filterInputs">
-           <label class="alwaysShow" for="firstName">First name:</label>
-           <label class="alwaysShow" for="lastName">Last name:</label>
+
+       
+        <article id="filterInputs"> <!-- All the input fields for filtering persons-->
+
+
+
+             <!-- All the  .................... -->
+            <label class="alwaysShow" for="firstName">First name:</label>
+            <label class="alwaysShow" for="lastName">Last name:</label>
            
-           <input class="alwaysShow" type="search" id="firstName" placeholder="Search by first name"
+            <input class="alwaysShow" type="search" id="firstName" placeholder="Search by first name"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
 
-           <input class="alwaysShow" type="search" id="lastName" placeholder="Search by last name"
+            <input class="alwaysShow" type="search" id="lastName" placeholder="Search by last name"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
 
 
 
 
 
-           <label class="filter" for="username">Username:</label>
-           <label class="filter" for="email">Email:</label>
+            <label class="filter" for="username">Username:</label>
+            <label class="filter" for="email">Email:</label>
 
-           <input class="filter" type="search" id="username" placeholder="Search by username"
+            <input class="filter" type="search" id="username" placeholder="Search by username"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
 
                       <input class="filter" type="search" id="email"
@@ -51,24 +56,24 @@ export default class PersonsPage {
 
 
 
-           <label class="filter" for="cell">Cell number:</label>
-           <label class="filter" for="gender">Gender:</label>
+            <label class="filter" for="cell">Cell number:</label>
+            <label class="filter" for="gender">Gender:</label>
 
-           <input class="filter" type="search" id="cell"
+            <input class="filter" type="search" id="cell"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')" placeholder="Search by phone number"
                title="Type in cell number">
           
-           <select class="filter" id="gender"
+            <select class="filter" id="gender"
                onchange=" filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
 
                <option value="">All genders</option>
 
              
 
-           </select>
+            </select>
 
-           <input id="filterBtn" class="displayNone" type="checkbox" onclick="showFilter()">
-           <label for="filterBtn">Filter even more</label>
+            <input id="filterBtn" class="displayNone" type="checkbox" onclick="showFilter()">
+            <label for="filterBtn">Filter even more</label>
     
 
        </article>

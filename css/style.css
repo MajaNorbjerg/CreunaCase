@@ -15,7 +15,6 @@ summary {
 
 body {
     font: 12px/18px "TrebuchetMS", Helvetica, Verdana, sans-serif;
-    /*XXX*/
     background-color: rgb(219, 196, 240);
 }
 
@@ -58,10 +57,11 @@ a {
 /* Main
 .........................................................................*/
 #flexPersons {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-around;
+
+    justify-content: flex-end;
 }
 
 .profile {
@@ -69,6 +69,7 @@ a {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    /* justify-content: flex-start; */
 }
 
 .profile img:hover {
@@ -77,9 +78,9 @@ a {
     cursor: pointer;
 }
 
-.profile div {
+/* .profile div {
     width: 50%;
-}
+} */
 
 .profile div {
     width: 100%;

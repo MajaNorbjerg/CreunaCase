@@ -26,11 +26,7 @@ import personService from "./services/personService.js";
 // window.pageChange = function () {
 //     spaService.pageChange();
 // }
-window.search1And2 = (searchValue, mainProperty, property1, property2) => personsPage.search1And2(searchValue, mainProperty, property1, property2)
-window.search1 = (input, property) => personsPage.search1(input, property)
-window.search1And1 = (searchValue, mainProperty, property1) => personsPage.search1And1(searchValue, mainProperty, property1);
-window.search2And2 = (searchValue, mainProperty, mainProperty2, property1, property2) => personsPage.search2And2(searchValue, mainProperty, mainProperty2, property1, property2);
-window.search3 = (searchValue, property, property2, property3) => personsPage.search3(searchValue, property, property2, property3);
+
 window.goToDetailView = (username) => detailView.goToDetailView(username);
 window.filter = (firstName, username, lastName, email, cell, gender) => personsPage.filter(firstName, username, lastName, email, cell, gender);
 window.showFilter = () => personsPage.showFilter();
