@@ -216,7 +216,15 @@ export default class PersonsPage {
         console.log(usernameElm.value)
 
 
-        filteredArr = this.data.filter(person => person.name.first.includes(nameElm.value) && person.login.username.includes(usernameElm.value) && person.location.timezone.offset === timezoneElm.value && person.location.street.name.includes(adressElm.value) && person.location.street.number.includes(adressElm.value) && person.email.includes(emailElm.value) && person.cell.includes(cellElm.value) && person.gender === genderElm.value
+        filteredArr = this.data.filter(person =>
+            person.name.first.includes(nameElm.value) && person.name.last.includes(nameElm.value) &&
+            person.login.username.includes(usernameElm.value) &&
+            person.email.includes(emailElm.value) &&
+            person.location.street.name.includes(adressElm.value) &&
+            // person.location.street.value.toString().includes(adressElm.value) &&
+            person.cell.includes(cellElm.value) &&
+            person.gender === genderElm.value
+            // person.location.timezone.offset === timezoneElm.value
 
         )
         console.log(filteredArr)
