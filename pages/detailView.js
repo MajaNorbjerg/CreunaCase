@@ -2,79 +2,71 @@ import personService from "../services/personService.js"
 
 export default class DetailView {
     constructor() {
-        // this.data = [];
-        // this.initData();
-        // this.data = personService.persons;
         this.template();
     }
 
-    // async initData() {
-    //     // let persons = await personService.loadPersons();
-    //     // console.log(await this.data)
-    //     this.data = await personService.loadPersons();
-    // }
-
+    //HTML template added to #detailView
+    //.............................................................
     template() {
-        document.querySelector('#detailView').innerHTML += /*html*/ `<article>
-        <div class="line">
-        <button type="button" onclick="goback()">Go back</button> </div>
+        document.querySelector('#detailView').innerHTML += /*html*/ `
+        <article>
+            <div class="line"> <!-- White background -->
+                <button type="button" onclick="goback()">Go back</button> <!-- Back to persons button -->
+            </div>
      
          
-           <div id="theDetailView">
-           </div>
+            <div id="detailViewContent"> <!-- Div for the person data -->
+            </div>
           
-           </article>
+        </article>
       `
 
     }
 
+
+    // Go from person page to the detail view page
+    //.............................................................
     goToDetailView(id) {
 
         let template = "";
-        let theId = id.slice(2, id.length);
-        personService.getPerson(theId)
-        console.log(personService.getPerson(theId))
+        let theId = id.slice(2, id.length); // The id in the DOM has "ID" in front of it, so it dosen´t start with a number. Remove these to caracters to get the person id from the API.     
+        let specificPerson = personService.getPerson(theId) // Run the function from personService, which finds the specific data for the choosen person.
 
-        for (const person of personService.persons) {
-            if (person.login.uuid === theId) {
+        template += /*html*/ ` <!-- Add this data to the template by this variable -->
+                <img src="${specificPerson.picture.medium}" alt="medium"> 
 
+                <h2>${specificPerson.name.first}
+                ${specificPerson.name.last} </h2>
 
-                template += /*html*/ ` 
-            
-                <img src="${person.picture.medium}" alt="medium"> 
-<br>
-
-
-             <h2>${person.name.first}
-            ${person.name.last} </h2>
-
-            <div class="textCollection">
-            <p><b>Username: </b>${person.login.username}</p>
-            <p><b>Gender: </b>${person.gender}</p>
-            </div>
+                <div class="textCollection">
+                    <p><b>Username: </b>${specificPerson.login.username}</p>
+                    <p><b>Gender: </b>${specificPerson.gender}</p>
+                </div>
        
-            <div class="textCollection">
-      <p><b>Adress: </b>${person.location.street.name} ${person.location.street.number}</p>
-   
-     
-      <p><b>Timezone: </b>${person.location.timezone.offset}</p>
-      </div>
-      <div class="textCollection">
-      <p><b>Email: </b><a href="mailto:${person.email}">${person.email}</a></p>
-      <p><b>Cell number: </b><a href="tel:${person.cell}">${person.cell}</a></p>
-      </div>
-            `;
+                <div class="textCollection">
+                    <p><b>Adress: </b>${specificPerson.location.street.name} ${specificPerson.location.street.number}</p> 
+                    <p><b>Timezone: </b>${specificPerson.location.timezone.offset}</p>
+                </div>
+      
+                <div class="textCollection">
+                    <p><b>Email: </b><a href="mailto:${specificPerson.email}">${specificPerson.email}</a></p>
+                    <p><b>Cell number: </b><a href="tel:${specificPerson.cell}">${specificPerson.cell}</a></p>
+                </div>
+            
+                `;
 
-            }
-        }
-        document.querySelector('#theDetailView').innerHTML = template;
-        document.querySelector('#profile').style.display = 'none'
-        document.querySelector('#detailView').style.display = 'block'
+
+        document.querySelector('#detailViewContent').innerHTML = template; // Add this template content to the page template
+        document.querySelector('#profile').style.display = 'none' // Hide the person page
+        document.querySelector('#detailView').style.display = 'block' // Show the detail view
     }
 
+
+    // Go from detail view page back to the person page
+    //.............................................................
     goback() {
-        document.querySelector('#detailView').style.display = 'none';
-        document.querySelector('#profile').style.display = 'block';
+        document.querySelector('#detailView').style.display = 'none'; // Hide the detail view
+        document.querySelector('#profile').style.display = 'block'; // Show the person page
     }
 
 }

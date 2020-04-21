@@ -18,6 +18,9 @@ body {
     background-color: rgb(219, 196, 240);
 }
 
+
+/* CSS variables
+.........................................................................*/
 :root {
 
     --imgRadius: 10px;
@@ -25,6 +28,9 @@ body {
 
     --green: #5a8170;
 }
+
+/* Text
+.........................................................................*/
 
 h2 {
     font-size: 3em;
@@ -38,15 +44,16 @@ b {
 
 a {
     text-decoration: none;
-
     font-weight: bold;
     color: #42032d;
 }
 
-.textCollection {
-    padding: 1.5em 0;
-}
 
+/* Overall classes
+.........................................................................*/
+.displayNone {
+    display: none;
+}
 
 
 /* Header
@@ -56,53 +63,56 @@ a {
 
 /* Main
 .........................................................................*/
+
+
+/* Page with Persons
+...................................*/
+
+
+/* Person part
+.....................*/
+
+/* The container with the persons */
 #flexPersons {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
+/* Every person */
 .profile {
     width: 30%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: flex-start; */
+    margin: 1em 1.6666666666666666666666%;
 }
 
-.profile img:hover {
-    animation: in .4s linear 1;
-    animation-fill-mode: forwards;
-    cursor: pointer;
-}
 
-/* .profile div {
-    width: 50%;
-} */
-
-.profile div {
+/* Name for the person */
+.profile p {
     width: 100%;
     text-align: center;
+    margin: 0 auto;
 }
 
-.profile .imgDiv {
-    overflow: hidden;
-}
 
-.profile .imgDiv div {
-    overflow: hidden;
-}
-
+/* Person img*/
 .profile img {
     animation: out .4s linear 1;
     animation-fill-mode: forwards;
     overflow: hidden;
     border-radius: var(--imgRadius);
     margin: 0 auto;
+    display: block;
 }
 
+/* Person img on hover*/
+.profile img:hover {
+    animation: in .4s linear 1;
+    animation-fill-mode: forwards;
+    cursor: pointer;
+}
+
+/* Animations for img on hover */
 @keyframes in {
     from {
         transform: scale(1);
@@ -113,6 +123,7 @@ a {
     }
 }
 
+/* Animations for img off hover */
 @keyframes out {
     from {
         transform: scale(1.1);
@@ -123,12 +134,29 @@ a {
     }
 }
 
+
+
+
+
+
+
+/* Inputpart
+.....................*/
+/* Container for inputfields & select */
+#filterInputs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* Label for inputfields */
 label {
     font-weight: bold;
     width: 45%;
     margin: 0 auto;
 }
 
+/* Input and select style */
 input,
 select {
     width: 45%;
@@ -138,10 +166,13 @@ select {
     margin: .5em auto;
 }
 
+
+/* Padding in inputfield */
 input[placeholder] {
     padding-left: 1em;
 }
 
+/* Padding in select */
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -149,20 +180,9 @@ select {
     padding-left: 1em;
 }
 
-.displayNone {
-    display: none;
-}
 
-.visibilityHidden {
-    visibility: hidden;
-}
-
-#filterInputs {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-[for="filterBtn"] {
+/* Label for showFilter checkbox */
+[for="filterCheck"] {
     width: 95%;
     margin: 1em auto 3em;
     border: none;
@@ -174,6 +194,11 @@ select {
 }
 
 
+
+
+/* Detail view
+...................................*/
+/* The intire detail view */
 #detailView {
     position: absolute;
     top: 0;
@@ -184,6 +209,7 @@ select {
     display: none;
 }
 
+/* The white box */
 #detailView .line {
     height: 35%;
     width: 100%;
@@ -193,6 +219,7 @@ select {
     left: 0;
 }
 
+/* Go back button */
 #detailView button {
     margin: 2em 12.5% 0;
     background-color: brown;
@@ -201,35 +228,44 @@ select {
     border-radius: var(--imgRadius);
 }
 
-#theDetailView {
+/* The part with person information */
+#detailViewContent {
     width: 80%;
     position: absolute;
     left: 12.5%;
-    top: 25%;
+    top: 29%;
 }
 
-#theDetailView img {
+/* The img for the person */
+#detailViewContent img {
     float: right;
     border-radius: var(--imgRadius);
 }
 
-#theDetailView h2 {
+/* The person name */
+#detailViewContent h2 {
     font-size: 2em;
     line-height: 1em;
     padding: 0;
+    margin: 0 0 4em;
 }
 
-#theDetailView p {
+/* The related text on detail view */
+.textCollection {
+    padding: 1.5em 0;
+}
+
+/* Clear float from img */
+#detailViewContent p {
     clear: both;
 }
 
-/* Footer
-.........................................................................*/
 
 
 
 
-/* @media query! Skærme over 720px
+
+/* @media query! Screens over 720px
 ..................................................................*/
 @media only screen and (min-width: 720px) {
     body {
@@ -240,10 +276,21 @@ select {
         width: 50%;
         margin: 0 auto;
     }
+
+    /* Stop the information in the detail view from getting wider */
+    #detailViewContent {
+        width: 30%;
+        transform: translate(30%);
+        left: 30%;
+        top: 29%;
+    }
 }
 
 @media only screen and (min-width: 1300px) {
+
+    /* Change person collums from 3 to 4 */
     .profile {
         width: 25%;
+        margin: 2em 0;
     }
 }
