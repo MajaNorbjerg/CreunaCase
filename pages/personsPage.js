@@ -200,131 +200,152 @@ export default class PersonsPage {
     };
 
     filter() {
+        let filteredArr = [];
+        // console.log(filteredArr)
+        let email = document.querySelector('#email');
+        console.log(email)
+        console.log(this.data)
+        for (const person of this.data) {
+            // console.log(person.email)
 
+            filteredArr = this.data.filter({
+                if (person.email.includes(email.value)) {
+                    console.log(filteredArr)
 
-        let allPersons = this.data;
-
-
-        let filteredPersons = []
-        // console.log(allPersons)
-        // console.log(this.data)
-        let newArr = [];
-        let inputs = document.querySelector('#filterInputs').getElementsByTagName('INPUT');
-        let selects = document.querySelector('#filterInputs').getElementsByTagName('SELECT');
-        // console.log(inputs.length, selects.length)
-        for (const input of inputs) {
-            if (input.value !== "") {
-                if (input.id === 'search') {
-
-                    for (const person of allPersons) {
-                        if (person.name.first.includes(input.value) || person.name.last.includes(input.value)) {
-                            // console.log('det virker måske')
-                            // console.log(allPersons)
-                            filteredPersons = allPersons.filter(person => {
-                                if (person.name.first.includes(input.value) || person.name.last.includes(input.value)) {
-                                    return person
-                                }
-                            })
-                            console.log(filteredPersons)
-                            // console.log(allPersons)
-                        } else {
-
-
-                            // let index = allPersons.indexOf(person);
-                            // allPersons.splice(index, 1);
-                            // console.log(allPersons)
-                            // console.log(allPersons)
-                        }
-                    }
-
+                    return filteredArr;
                 }
-
-
-                if (input.id == 'username') {
-
-                    for (const person of allPersons) {
-                        if (person.login.username.includes(input.value)) {
-                            // console.log('det virker måske')
-                        } else {
-                            let index = allPersons.indexOf(person);
-                            allPersons.splice(index, 1);
-                        }
-                    }
-
-                }
-
-
-                if (input.id == 'adress') {
-                    console.log(input.id)
-                    console.log(allPersons)
-                    for (const person of allPersons) {
-                        if (person.location.street.name.includes(input.value) || person.location.street.number.includes(input.value)) {
-                            // console.log('det virker måske')
-                        } else {
-                            let index = allPersons.indexOf(person);
-                            allPersons.splice(index, 1);
-                        }
-                    }
-
-                }
-
-                if (input.id === 'email') {
-
-                    for (const person of allPersons) {
-                        if (person.email.includes(input.value)) {
-                            // console.log('det virker måske')
-                        } else {
-                            let index = allPersons.indexOf(person);
-                            allPersons.splice(index, 1);
-                        }
-                    }
-
-                }
-
-                if (input.id == 'cell') {
-
-                    for (const person of allPersons) {
-                        if (person.cell(input.value)) {
-                            // console.log('det virker måske')
-                        } else {
-                            let index = allPersons.indexOf(person);
-                            allPersons.splice(index, 1);
-                        }
-                    }
-
-                }
-            }
+            })
 
 
         }
-
-
-
-        this.appendPersons(filteredPersons);
-
-
-        // let gender = document.querySelector('#gender');
-        // let timezone = document.querySelector('#timezone');
-        // let adress = document.querySelector('#adress');
-        // let time = "";
-        // let adr = "";
-        // for (const person of this.data) {
-
-
-        //     if (timezone.value !== "") {
-        //         time = `${timezone.value} === ${person.location.timezone.offset}`
-        //     }
-        //     if (adress.value !== "") {
-        //         adr = `${timezone.value} === ${person.location.street.name}`
-        //     }
-
-
-        //     if (time && adr) {
-        //         // if (person.gender.includes(gender.value)) {
-        //         console.log('det matcher')
-        //     }
-
-        // }
-
     }
+
+    // filter() {
+
+
+    //     let allPersons = this.data;
+
+
+    //     let filteredPersons = []
+    //     // console.log(allPersons)
+    //     // console.log(this.data)
+    //     let newArr = [];
+    //     let inputs = document.querySelector('#filterInputs').getElementsByTagName('INPUT');
+    //     let selects = document.querySelector('#filterInputs').getElementsByTagName('SELECT');
+    //     // console.log(inputs.length, selects.length)
+    //     for (const input of inputs) {
+    //         if (input.value !== "") {
+    //             if (input.id === 'search') {
+
+    //                 for (const person of allPersons) {
+    //                     if (person.name.first.includes(input.value) || person.name.last.includes(input.value)) {
+    //                         // console.log('det virker måske')
+    //                         // console.log(allPersons)
+    //                         filteredPersons = allPersons.filter(person => {
+    //                             if (person.name.first.includes(input.value) || person.name.last.includes(input.value)) {
+    //                                 return person
+    //                             }
+    //                         })
+    //                         console.log(filteredPersons)
+    //                         // console.log(allPersons)
+    //                     } else {
+
+
+    //                         // let index = allPersons.indexOf(person);
+    //                         // allPersons.splice(index, 1);
+    //                         // console.log(allPersons)
+    //                         // console.log(allPersons)
+    //                     }
+    //                 }
+
+    //             }
+
+
+    //             if (input.id == 'username') {
+
+    //                 for (const person of allPersons) {
+    //                     if (person.login.username.includes(input.value)) {
+    //                         // console.log('det virker måske')
+    //                     } else {
+    //                         let index = allPersons.indexOf(person);
+    //                         allPersons.splice(index, 1);
+    //                     }
+    //                 }
+
+    //             }
+
+
+    //             if (input.id == 'adress') {
+    //                 console.log(input.id)
+    //                 console.log(allPersons)
+    //                 for (const person of allPersons) {
+    //                     if (person.location.street.name.includes(input.value) || person.location.street.number.includes(input.value)) {
+    //                         // console.log('det virker måske')
+    //                     } else {
+    //                         let index = allPersons.indexOf(person);
+    //                         allPersons.splice(index, 1);
+    //                     }
+    //                 }
+
+    //             }
+
+    //             if (input.id === 'email') {
+
+    //                 for (const person of allPersons) {
+    //                     if (person.email.includes(input.value)) {
+    //                         // console.log('det virker måske')
+    //                     } else {
+    //                         let index = allPersons.indexOf(person);
+    //                         allPersons.splice(index, 1);
+    //                     }
+    //                 }
+
+    //             }
+
+    //             if (input.id == 'cell') {
+
+    //                 for (const person of allPersons) {
+    //                     if (person.cell(input.value)) {
+    //                         // console.log('det virker måske')
+    //                     } else {
+    //                         let index = allPersons.indexOf(person);
+    //                         allPersons.splice(index, 1);
+    //                     }
+    //                 }
+
+    //             }
+    //         }
+
+
+    //     }
+
+
+
+    //     this.appendPersons(filteredPersons);
+
+
+    //     // let gender = document.querySelector('#gender');
+    //     // let timezone = document.querySelector('#timezone');
+    //     // let adress = document.querySelector('#adress');
+    //     // let time = "";
+    //     // let adr = "";
+    //     // for (const person of this.data) {
+
+
+    //     //     if (timezone.value !== "") {
+    //     //         time = `${timezone.value} === ${person.location.timezone.offset}`
+    //     //     }
+    //     //     if (adress.value !== "") {
+    //     //         adr = `${timezone.value} === ${person.location.street.name}`
+    //     //     }
+
+
+    //     //     if (time && adr) {
+    //     //         // if (person.gender.includes(gender.value)) {
+    //     //         console.log('det matcher')
+    //     //     }
+
+    //     // }
+
+    // }
 }
