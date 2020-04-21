@@ -4,6 +4,9 @@ import PersonsPage from "./pages/personsPage.js";
 import DetailView from "./pages/detailView.js";
 
 
+// // Declare and init pages
+let personsPage = new PersonsPage();
+let detailView = new DetailView();
 
 // Import services
 // import SpaService from "./services/spa.js";
@@ -12,9 +15,6 @@ import personService from "./services/personService.js";
 
 
 
-// // Declare and init pages
-let personsPage = new PersonsPage();
-let detailView = new DetailView();
 
 
 // // Declare and init services
@@ -32,5 +32,6 @@ window.search1And1 = (searchValue, mainProperty, property1) => personsPage.searc
 window.search2And2 = (searchValue, mainProperty, mainProperty2, property1, property2) => personsPage.search2And2(searchValue, mainProperty, mainProperty2, property1, property2);
 window.search3 = (searchValue, property, property2, property3) => personsPage.search3(searchValue, property, property2, property3);
 window.goToDetailView = (username) => detailView.goToDetailView(username);
-window.filter = (search, username, timezone, adress, email, cell, gender) => personsPage.filter(search, username, timezone, adress, email, cell, gender);
+window.filter = (firstName, username, lastName, email, cell, gender) => personsPage.filter(firstName, username, lastName, email, cell, gender);
+window.showFilter = () => personsPage.showFilter();
 window.goback = () => detailView.goback()

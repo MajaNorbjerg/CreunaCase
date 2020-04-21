@@ -14,14 +14,62 @@ export default class PersonsPage {
         this.data = await personService.loadPersons();
         this.appendPersons(this.data);
         this.createGenderOptions();
-        this.createTimezoneOptions();
+        // this.createTimezoneOptions();
         console.log(this.data)
+        this.showFilter();
 
     }
     template() {
         document.querySelector('#profile').innerHTML += /*html*/ `
    
            <h2>Persons</h2>
+
+           <article id="filterInputs">
+           <label class="alwaysShow" for="firstName">First name:</label><label class="alwaysShow" for="lastName">Last name:</label>
+           <input class="alwaysShow" type="search" id="firstName" placeholder="Search by first name"
+               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
+
+           
+           <input class="alwaysShow" type="search" id="lastName" placeholder="Search by last name"
+               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
+
+
+
+
+
+           <label class="filter" for="username">Username:</label>
+           <input class="filter" type="search" id="username" placeholder="Search by username"
+               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
+
+
+
+           <label class="filter" for="email">Email:</label>
+           <input class="filter" type="search" id="email"
+               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')"
+               placeholder=" Search for an email" title="Search by email">
+
+
+           <label class="filter" for="cell">Cell number:</label>
+           <input class="filter" type="search" id="cell"
+               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')" placeholder="Search by phone number"
+               title="Type in cell number">
+
+
+           <label class="filter" for="gender">Gender:</label>
+           <select class="filter" id="gender"
+               onchange=" filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
+
+               <option value="">All genders</option>
+
+             
+
+           </select>
+
+           <input id="filterBtn" class="displayNone" type="checkbox" onclick="showFilter()">
+           <label for="filterBtn">Filter even more</label>
+    
+
+       </article>
 
            <div id="flexPersons">
            </div>
@@ -35,119 +83,15 @@ export default class PersonsPage {
         for (const person of persons) {
 
 
-
             template += /*html*/ ` <article class="profile" id="ID${person.login.uuid}" onclick="goToDetailView(this.id)"> <img src="${person.picture.thumbnail}" alt="thumbnail"> 
              <div> ${person.name.first}
             ${person.name.last} </div>
-            ${person.email}
-            ${person.cell}
             </article >
             `;
 
         }
         document.querySelector('#flexPersons').innerHTML = template;
     }
-
-    // search1And2(searchValue, mainProperty, property1, property2) {
-    //     searchValue = searchValue.toLowerCase();
-    //     console.log(searchValue);
-
-    //     // this.allPersons = [];
-    //     for (const person of this.data) {
-    //         let element = document.querySelector(`#ID${person.login.uuid}`)
-    //         let prop1 = person[mainProperty][property1].toLowerCase();
-    //         let prop2 = person[mainProperty][property2].toLowerCase();
-    //         if (prop1.includes(searchValue) || prop2.includes(searchValue)) {
-    //             element.style.display = ""
-    //         } else {
-    //             element.style.display = "none";
-    //         }
-    //     }
-    //     // this.appendPersons(this.allPersons);
-    // }
-
-    // search2And2(searchValue, mainProperty, mainProperty2, property1, property2) {
-    //     searchValue = searchValue.toLowerCase();
-
-    //     for (const person of this.data) {
-    //         let element = document.querySelector(`#ID${person.login.uuid}`)
-
-    //         let prop1 = person[mainProperty][mainProperty2][property1].toString().toLowerCase();
-    //         let prop2 = person[mainProperty][mainProperty2][property2].toLowerCase();
-    //         if (prop1.includes(searchValue) || prop2.includes(searchValue) && (element.style.display = 'inline')) {
-    //             // element.style.display = ""
-    //         } else {
-    //             element.style.display = "none";
-    //         }
-    //     }
-    //     // this.appendPersons(this.allPersons);
-    // }
-
-    // search1(searchValue, property) {
-
-
-    //     searchValue = searchValue.toLowerCase();
-    //     // let allPersons = [];
-    //     for (const person of this.data) {
-    //         let element = document.querySelector(`#ID${person.login.uuid}`)
-
-    //         let theProperty = person[property].toLowerCase();
-    //         if (theProperty.includes(searchValue) && (element.style.display = 'inline')) {
-    //             // element.style.display = ""
-    //         } else {
-    //             element.style.display = "none";
-    //         }
-    //     }
-    //     // this.appendPersons(this.allPersons);
-    // }
-
-    // search3(searchValue, property, property2, property3) {
-    //     searchValue = searchValue.toLowerCase();
-    //     // let allPersons = [];
-    //     for (const person of this.data) {
-    //         let element = document.querySelector(`#ID${person.login.uuid}`)
-    //         let theProperty = person[property][property2][property3].toLowerCase();
-    //         if (theProperty.includes(searchValue) && (element.style.display = 'inline')) {
-    //             // element.style.display = ""
-    //         } else {
-    //             element.style.display = "none";
-    //         }
-    //     }
-    //     // this.appendPersons(this.allPersons);
-    // }
-
-    // search1And1(searchValue, mainProperty, property1) {
-    //     searchValue = searchValue.toLowerCase();
-    //     // console.log(searchValue);
-
-    //     // let allPersons = [];
-    //     for (const person of this.data) {
-    //         let element = document.querySelector(`#ID${person.login.uuid}`)
-    //         let prop1 = person[mainProperty][property1].toLowerCase();
-
-    //         if (prop1.includes(searchValue) && (element.style.display = 'inline')) {
-    //             // element.style.display = ""
-    //         } else {
-    //             element.style.display = "none";
-    //         }
-    //     }
-    //     // this.appendPersons(this.allPersons);
-    // }
-
-    // var input, filter, ul, li, a, i, txtValue;
-    // input = document.getElementById("myInput");
-    // filter = input.value.toUpperCase();
-    // ul = document.getElementById("myUL");
-    // li = ul.getElementsByTagName("li");
-    // for (i = 0; i < li.length; i++) {
-    //     a = li[i].getElementsByTagName("a")[0];
-    //     txtValue = a.textContent || a.innerText;
-    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //         li[i].style.display = "";
-    //     } else {
-    //         li[i].style.display = "none";
-    //     }
-    // }
 
     // Option values from the api to the select gender box
     //.............................................................
@@ -177,189 +121,70 @@ export default class PersonsPage {
 
     // Option values from the api to the select gender box
     //.............................................................
-    createTimezoneOptions() {
-        let filteredProperties = [];
+    // createTimezoneOptions() {
+    //     let filteredProperties = [];
 
-        // Add the property to the array if the value isn´t there allready
-        for (const person of this.data) {
-            if (filteredProperties.indexOf(person.location.timezone.offset) === -1) {
-                filteredProperties.push(person.location.timezone.offset);
-            }
-        }
-        filteredProperties.sort();
+    //     // Add the property to the array if the value isn´t there allready
+    //     for (const person of this.data) {
+    //         if (filteredProperties.indexOf(person.location.timezone.offset) === -1) {
+    //             filteredProperties.push(person.location.timezone.offset);
+    //         }
+    //     }
+    //     filteredProperties.sort();
 
-        // Create options for the select box based on the dublicate-free array
-        for (const value of filteredProperties) {
-            var select = document.getElementById("timezone");
-            var option = document.createElement("option");
+    //     // Create options for the select box based on the dublicate-free array
+    //     for (const value of filteredProperties) {
+    //         var select = document.getElementById("timezone");
+    //         var option = document.createElement("option");
 
-            // Insert the values to options
-            option.text = value;
+    //         // Insert the values to options
+    //         option.text = value;
 
-            // Create option
-            select.add(option);
-        }
-    };
+    //         // Create option
+    //         select.add(option);
+    //     }
+    // };
 
-    filter(search, username, timezone, adress, email, cell, gender) {
+
+
+    filter(firstName, username, lastName, email, cell, gender) {
         let filteredArr = [];
-        // console.log(filteredArr)
-        console.log(search)
-        let nameElm = document.querySelector(`#${search}`)
+
+        let firstNameElm = document.querySelector(`#${firstName}`)
+        let lastNameElm = document.querySelector(`#${lastName}`)
         let usernameElm = document.querySelector(`#${username}`);
-        let timezoneElm = document.querySelector(`#${timezone}`)
-        let adressElm = document.querySelector(`#${adress}`);
+        // let timezoneElm = document.querySelector(`#${timezone}`)
+        // let adressElm = document.querySelector(`#${adress}`);
         let emailElm = document.querySelector(`#${email}`)
         let cellElm = document.querySelector(`#${cell}`);
         let genderElm = document.querySelector(`#${gender}`)
 
-        console.log(usernameElm.value)
-
 
         filteredArr = this.data.filter(person =>
-            person.name.first.includes(nameElm.value) && person.name.last.includes(nameElm.value) &&
+            person.name.first.includes(firstNameElm.value) &&
+            person.name.last.includes(lastNameElm.value) &&
             person.login.username.includes(usernameElm.value) &&
             person.email.includes(emailElm.value) &&
-            person.location.street.name.includes(adressElm.value) &&
-            // person.location.street.value.toString().includes(adressElm.value) &&
             person.cell.includes(cellElm.value) &&
             person.gender === genderElm.value
-            // person.location.timezone.offset === timezoneElm.value
 
         )
-        console.log(filteredArr)
         this.appendPersons(filteredArr);
-
-
 
     }
 
-    // filter() {
+    showFilter() {
+        let checkBox = document.querySelector('#filterBtn')
+        let filter = document.querySelector('#filterInputs').querySelectorAll('.filter');
+        for (const input of filter) {
+            input.classList.toggle('visibilityHidden');
+        }
 
-
-    //     let allPersons = this.data;
-
-
-    //     let filteredPersons = []
-    //     // console.log(allPersons)
-    //     // console.log(this.data)
-    //     let newArr = [];
-    //     let inputs = document.querySelector('#filterInputs').getElementsByTagName('INPUT');
-    //     let selects = document.querySelector('#filterInputs').getElementsByTagName('SELECT');
-    //     // console.log(inputs.length, selects.length)
-    //     for (const input of inputs) {
-    //         if (input.value !== "") {
-    //             if (input.id === 'search') {
-
-    //                 for (const person of allPersons) {
-    //                     if (person.name.first.includes(input.value) || person.name.last.includes(input.value)) {
-    //                         // console.log('det virker måske')
-    //                         // console.log(allPersons)
-    //                         filteredPersons = allPersons.filter(person => {
-    //                             if (person.name.first.includes(input.value) || person.name.last.includes(input.value)) {
-    //                                 return person
-    //                             }
-    //                         })
-    //                         console.log(filteredPersons)
-    //                         // console.log(allPersons)
-    //                     } else {
-
-
-    //                         // let index = allPersons.indexOf(person);
-    //                         // allPersons.splice(index, 1);
-    //                         // console.log(allPersons)
-    //                         // console.log(allPersons)
-    //                     }
-    //                 }
-
-    //             }
-
-
-    //             if (input.id == 'username') {
-
-    //                 for (const person of allPersons) {
-    //                     if (person.login.username.includes(input.value)) {
-    //                         // console.log('det virker måske')
-    //                     } else {
-    //                         let index = allPersons.indexOf(person);
-    //                         allPersons.splice(index, 1);
-    //                     }
-    //                 }
-
-    //             }
-
-
-    //             if (input.id == 'adress') {
-    //                 console.log(input.id)
-    //                 console.log(allPersons)
-    //                 for (const person of allPersons) {
-    //                     if (person.location.street.name.includes(input.value) || person.location.street.number.includes(input.value)) {
-    //                         // console.log('det virker måske')
-    //                     } else {
-    //                         let index = allPersons.indexOf(person);
-    //                         allPersons.splice(index, 1);
-    //                     }
-    //                 }
-
-    //             }
-
-    //             if (input.id === 'email') {
-
-    //                 for (const person of allPersons) {
-    //                     if (person.email.includes(input.value)) {
-    //                         // console.log('det virker måske')
-    //                     } else {
-    //                         let index = allPersons.indexOf(person);
-    //                         allPersons.splice(index, 1);
-    //                     }
-    //                 }
-
-    //             }
-
-    //             if (input.id == 'cell') {
-
-    //                 for (const person of allPersons) {
-    //                     if (person.cell(input.value)) {
-    //                         // console.log('det virker måske')
-    //                     } else {
-    //                         let index = allPersons.indexOf(person);
-    //                         allPersons.splice(index, 1);
-    //                     }
-    //                 }
-
-    //             }
-    //         }
-
-
-    //     }
-
-
-
-    //     this.appendPersons(filteredPersons);
-
-
-    //     // let gender = document.querySelector('#gender');
-    //     // let timezone = document.querySelector('#timezone');
-    //     // let adress = document.querySelector('#adress');
-    //     // let time = "";
-    //     // let adr = "";
-    //     // for (const person of this.data) {
-
-
-    //     //     if (timezone.value !== "") {
-    //     //         time = `${timezone.value} === ${person.location.timezone.offset}`
-    //     //     }
-    //     //     if (adress.value !== "") {
-    //     //         adr = `${timezone.value} === ${person.location.street.name}`
-    //     //     }
-
-
-    //     //     if (time && adr) {
-    //     //         // if (person.gender.includes(gender.value)) {
-    //     //         console.log('det matcher')
-    //     //     }
-
-    //     // }
-
-    // }
+        let label = document.querySelector('[for="filterBtn"]')
+        if (checkBox.checked == true) {
+            label.innerHTML = "Less filtering"
+        } else {
+            label.innerHTML = "Even more filtering"
+        }
+    }
 }
