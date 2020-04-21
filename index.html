@@ -56,12 +56,14 @@
             <br>
 
             <label for="username">Search username:</label>
-            <input type="search" id="username" placeholder="Search username" onkeyup=" filter()">
+            <input type="search" id="username" placeholder="Search username"
+                onkeyup="  filter('search', 'username', 'timezone', 'adress', 'email', 'cell', 'gender')">
             <!--search1And1(this.value, 'login', 'username');-->
             <br>
 
             <label for="timezone">Choose timezone:</label>
-            <select id="timezone" onchange="filter()">
+            <select id="timezone"
+                onchange=" filter('search', 'username', 'timezone', 'adress', 'email', 'cell', 'gender')">
                 <!--search3(this.value, 'location', 'timezone', 'offset');-->
                 <option value="">None</option>
                 <!-- <option value="male">Male</option>
@@ -70,23 +72,28 @@
             <br>
 
             <label for="adress">Search adress:</label>
-            <input type="search" id="adress" placeholder="Search adress" onkeyup=" filter()">
+            <input type="search" id="adress" placeholder="Search adress"
+                onkeyup="  filter('search', 'username', 'timezone', 'adress', 'email', 'cell', 'gender')">
             <!--search2And2(this.value, 'location', 'street', 'number', 'name');-->
             <br>
 
             <label for="email">Search email:</label>
-            <input type="search" id="email" onkeyup=" filter()" placeholder="Search for an email"
-                title="Type in an email">
+            <input type="search" id="email"
+                onkeyup="  filter('search', 'username', 'timezone', 'adress', 'email', 'cell', 'gender')"
+                placeholder="Search for an email" title="Type in an email">
             <!--search1(this.value, this.id); -->
             <br>
 
             <label for="cell">Search cell number:</label>
-            <input type="search" id="cell" onkeyup="filter()" placeholder="88888888" title="Type in cell number">
+            <input type="search" id="cell"
+                onkeyup=" filter('search', 'username', 'timezone', 'adress', 'email', 'cell', 'gender')"
+                placeholder="88888888" title="Type in cell number">
             <!--search1(this.value, this.id); -->
             <br>
 
             <label for="gender">Search gender:</label>
-            <select id="gender" onchange=" filter()">
+            <select id="gender"
+                onchange="  filter('search', 'username', 'timezone', 'adress', 'email', 'cell', 'gender')">
                 <!--search1(this.value, this.id); -->
                 <option value="">All</option>
                 <!-- <option value="male">Male</option>

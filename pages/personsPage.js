@@ -213,19 +213,16 @@ export default class PersonsPage {
         let cellElm = document.querySelector(`#${cell}`);
         let genderElm = document.querySelector(`#${gender}`)
 
+        console.log(usernameElm.value)
 
-        filteredArr = this.data.filter(person => person.name.first.includes(nameElm.value) && person.login.username.includes(usernameElm.value) &&
-            person.location.timezone.offset === timezoneElm.value &&
-            person.location.street.name.includes(adressElm.value) && person.location.street.number.includes(adressElm.value) &&
-            person.email.includes(emailElm.value) &&
-            person.cell.includes(cellElm.value) &&
-            person.gender === genderElm.value
+
+        filteredArr = this.data.filter(person => person.name.first.includes(nameElm.value) && person.login.username.includes(usernameElm.value) && person.location.timezone.offset === timezoneElm.value && person.location.street.name.includes(adressElm.value) && person.location.street.number.includes(adressElm.value) && person.email.includes(emailElm.value) && person.cell.includes(cellElm.value) && person.gender === genderElm.value
 
         )
-
+        console.log(filteredArr)
         this.appendPersons(filteredArr);
 
-        console.log(filteredArr)
+
 
     }
 
