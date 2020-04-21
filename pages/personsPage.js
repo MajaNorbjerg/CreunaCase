@@ -19,7 +19,7 @@ export default class PersonsPage {
 
     //....................HTML template added to #profile ....................
     template() {
-        document.querySelector('#profile').innerHTML += /*html*/ `
+        document.querySelector("#profile").innerHTML += /*html*/ `
    
         <h2>Persons</h2>
 
@@ -34,10 +34,10 @@ export default class PersonsPage {
             <label class="alwaysShow" for="lastName">Last name:</label>
            
             <input class="alwaysShow" type="search" id="firstName" placeholder="Search by first name"
-               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
+               onkeyup="filter()">
 
             <input class="alwaysShow" type="search" id="lastName" placeholder="Search by last name"
-               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
+               onkeyup="filter()">
 
 
 
@@ -47,10 +47,10 @@ export default class PersonsPage {
             <label class="filter" for="email">Email:</label>
 
             <input class="filter" type="search" id="username" placeholder="Search by username"
-               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
+               onkeyup="filter()">
 
                       <input class="filter" type="search" id="email"
-               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')"
+               onkeyup="filter()"
                placeholder=" Search for an email" title="Search by email">
 
 
@@ -60,11 +60,11 @@ export default class PersonsPage {
             <label class="filter" for="gender">Gender:</label>
 
             <input class="filter" type="search" id="cell"
-               onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')" placeholder="Search by phone number"
+               onkeyup="filter()" placeholder="Search by phone number"
                title="Type in cell number">
           
             <select class="filter" id="gender"
-               onchange=" filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
+               onchange=" filter()">
 
                <option value="">All genders</option>
 
@@ -155,29 +155,23 @@ export default class PersonsPage {
 
 
     filter(firstName, username, lastName, email, cell, gender) {
-        let filteredArr = [];
+        // let filteredArr = [];
 
-        let firstNameElm = document.querySelector(`#${firstName}`).value.toLowerCase();
-        let lastNameElm = document.querySelector(`#${lastName}`).value.toLowerCase();
-        let usernameElm = document.querySelector(`#${username}`).value.toLowerCase();
-        // let timezoneElm = document.querySelector(`#${timezone}`)
-        // let adressElm = document.querySelector(`#${adress}`);
-        let emailElm = document.querySelector(`#${email}`).value.toLowerCase();
-        let cellElm = document.querySelector(`#${cell}`).value.toLowerCase();
-        let genderElm = document.querySelector(`#${gender}`).value.toLowerCase();
+        console.log(firstName, username, lastName, email, cell, gender)
 
         // let first = firstNameElm.value.toLowerCase();
-        console.log(firstNameElm)
 
-        filteredArr = this.data.filter(person =>
-            person.name.first.includes(firstNameElm) &&
-            person.name.last.includes(lastNameElm.value) &&
-            person.login.username.includes(usernameElm.value) &&
-            person.email.includes(emailElm.value) &&
-            person.cell.includes(cellElm.value) &&
-            person.gender === genderElm.value
+
+        let filteredArr = this.data.filter(person =>
+            person.name.first.toLowerCase().includes(firstName) &&
+            person.name.last.toLowerCase().includes(lastName) &&
+            person.login.username.toLowerCase().includes(username) &&
+            person.email.toLowerCase().includes(email) &&
+            person.cell.toLowerCase().includes(cell) &&
+            (person.gender === gender || gender === "")
 
         )
+        console.log(filteredArr)
         this.appendPersons(filteredArr);
 
     }
