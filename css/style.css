@@ -39,8 +39,9 @@ b {
 
 a {
     text-decoration: none;
-    color: #451234;
+
     font-weight: bold;
+    color: #42032d;
 }
 
 .textCollection {
@@ -68,12 +69,9 @@ a {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    /* width: 100%; */
-
 }
 
 .profile img:hover {
-    /* transform: scale(1.1); */
     animation: in .4s linear 1;
     animation-fill-mode: forwards;
     cursor: pointer;
@@ -139,6 +137,17 @@ select {
     margin: .5em auto;
 }
 
+input[placeholder] {
+    padding-left: 1em;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-left: 1em;
+}
+
 .displayNone {
     display: none;
 }
@@ -175,7 +184,7 @@ select {
 }
 
 #detailView .line {
-    height: 25%;
+    height: 35%;
     width: 100%;
     background-color: #F9F8Fa;
     position: absolute;
@@ -184,9 +193,7 @@ select {
 }
 
 #detailView button {
-    margin: 2em 10% 0;
-    /* z-index: 5; */
-
+    margin: 2em 12.5% 0;
     background-color: brown;
     color: white;
     cursor: pointer;
@@ -196,20 +203,19 @@ select {
 #theDetailView {
     width: 80%;
     position: absolute;
-    transform: translate(12.5%, 50%);
+    left: 12.5%;
+    top: 25%;
 }
 
 #theDetailView img {
-
     float: right;
     border-radius: var(--imgRadius);
-
-
 }
 
 #theDetailView h2 {
     font-size: 2em;
     line-height: 1em;
+    padding: 0;
 }
 
 #theDetailView p {
@@ -222,5 +228,21 @@ select {
 
 
 
-/* @media query! Skærme over XXXpx
+/* @media query! Skærme over 720px
 ..................................................................*/
+@media only screen and (min-width: 720px) {
+    body {
+        background-color: rgb(243, 216, 250);
+    }
+
+    main {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .profile {
+        width: 25%;
+    }
+}

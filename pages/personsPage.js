@@ -25,11 +25,12 @@ export default class PersonsPage {
            <h2>Persons</h2>
 
            <article id="filterInputs">
-           <label class="alwaysShow" for="firstName">First name:</label><label class="alwaysShow" for="lastName">Last name:</label>
+           <label class="alwaysShow" for="firstName">First name:</label>
+           <label class="alwaysShow" for="lastName">Last name:</label>
+           
            <input class="alwaysShow" type="search" id="firstName" placeholder="Search by first name"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
 
-           
            <input class="alwaysShow" type="search" id="lastName" placeholder="Search by last name"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
 
@@ -38,24 +39,25 @@ export default class PersonsPage {
 
 
            <label class="filter" for="username">Username:</label>
+           <label class="filter" for="email">Email:</label>
+
            <input class="filter" type="search" id="username" placeholder="Search by username"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
 
-
-
-           <label class="filter" for="email">Email:</label>
-           <input class="filter" type="search" id="email"
+                      <input class="filter" type="search" id="email"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')"
                placeholder=" Search for an email" title="Search by email">
 
 
+
+
            <label class="filter" for="cell">Cell number:</label>
+           <label class="filter" for="gender">Gender:</label>
+
            <input class="filter" type="search" id="cell"
                onkeyup="filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')" placeholder="Search by phone number"
                title="Type in cell number">
-
-
-           <label class="filter" for="gender">Gender:</label>
+          
            <select class="filter" id="gender"
                onchange=" filter('firstName', 'username', 'lastName', 'email', 'cell', 'gender')">
 
@@ -150,18 +152,20 @@ export default class PersonsPage {
     filter(firstName, username, lastName, email, cell, gender) {
         let filteredArr = [];
 
-        let firstNameElm = document.querySelector(`#${firstName}`)
-        let lastNameElm = document.querySelector(`#${lastName}`)
-        let usernameElm = document.querySelector(`#${username}`);
+        let firstNameElm = document.querySelector(`#${firstName}`).value.toLowerCase();
+        let lastNameElm = document.querySelector(`#${lastName}`).value.toLowerCase();
+        let usernameElm = document.querySelector(`#${username}`).value.toLowerCase();
         // let timezoneElm = document.querySelector(`#${timezone}`)
         // let adressElm = document.querySelector(`#${adress}`);
-        let emailElm = document.querySelector(`#${email}`)
-        let cellElm = document.querySelector(`#${cell}`);
-        let genderElm = document.querySelector(`#${gender}`)
+        let emailElm = document.querySelector(`#${email}`).value.toLowerCase();
+        let cellElm = document.querySelector(`#${cell}`).value.toLowerCase();
+        let genderElm = document.querySelector(`#${gender}`).value.toLowerCase();
 
+        // let first = firstNameElm.value.toLowerCase();
+        console.log(firstNameElm)
 
         filteredArr = this.data.filter(person =>
-            person.name.first.includes(firstNameElm.value) &&
+            person.name.first.includes(firstNameElm) &&
             person.name.last.includes(lastNameElm.value) &&
             person.login.username.includes(usernameElm.value) &&
             person.email.includes(emailElm.value) &&
@@ -177,7 +181,7 @@ export default class PersonsPage {
         let checkBox = document.querySelector('#filterBtn')
         let filter = document.querySelector('#filterInputs').querySelectorAll('.filter');
         for (const input of filter) {
-            input.classList.toggle('visibilityHidden');
+            input.classList.toggle('displayNone');
         }
 
         let label = document.querySelector('[for="filterBtn"]')
