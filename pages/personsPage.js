@@ -39,6 +39,8 @@ export default class PersonsPage {
             template += /*html*/ ` <article class="profile" id="ID${person.login.uuid}" onclick="goToDetailView(this.id)"> <img src="${person.picture.thumbnail}" alt="thumbnail"> 
              <div> ${person.name.first}
             ${person.name.last} </div>
+            ${person.email}
+            ${person.cell}
             </article >
             `;
 
@@ -199,25 +201,32 @@ export default class PersonsPage {
         }
     };
 
-    filter() {
+    filter(search, username, timezone, adress, email, cell, gender) {
         let filteredArr = [];
         // console.log(filteredArr)
-        let email = document.querySelector('#email');
-        console.log(email)
-        console.log(this.data)
-        for (const person of this.data) {
-            // console.log(person.email)
-
-            filteredArr = this.data.filter({
-                if (person.email.includes(email.value)) {
-                    console.log(filteredArr)
-
-                    return filteredArr;
-                }
-            })
+        console.log(search)
+        let nameElm = document.querySelector(`#${search}`)
+        let usernameElm = document.querySelector(`#${username}`);
+        let timezoneElm = document.querySelector(`#${timezone}`)
+        let adressElm = document.querySelector(`#${adress}`);
+        let emailElm = document.querySelector(`#${email}`)
+        let cellElm = document.querySelector(`#${cell}`);
+        let genderElm = document.querySelector(`#${gender}`)
 
 
-        }
+        filteredArr = this.data.filter(person => person.name.first.includes(nameElm.value) && person.login.username.includes(usernameElm.value) &&
+            person.location.timezone.offset === timezoneElm.value &&
+            person.location.street.name.includes(adressElm.value) && person.location.street.number.includes(adressElm.value) &&
+            person.email.includes(emailElm.value) &&
+            person.cell.includes(cellElm.value) &&
+            person.gender === genderElm.value
+
+        )
+
+        this.appendPersons(filteredArr);
+
+        console.log(filteredArr)
+
     }
 
     // filter() {
